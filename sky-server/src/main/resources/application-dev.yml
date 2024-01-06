@@ -6,3 +6,8 @@ sky:
     database: sky_take_out
     username: Sparkle
     password: 18899174
+  alioss:
+    endpoint: oss-cn-beijing.aliyuncs.com
+    access-key-id: LTAI5t7Y7DKXHpSdohvQkRb7
+    access-key-secret: qQLhU2TeCMFx2QSVlISuN68i21PIvf
+    bucket-name: skytakeoutsparkle
