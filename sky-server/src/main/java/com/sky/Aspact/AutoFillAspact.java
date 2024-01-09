@@ -1,4 +1,4 @@
-package com.sky.mapper.Aspact;
+package com.sky.Aspact;
 
 import com.sky.annotation.AutoFill;
 import com.sky.constant.AutoFillConstant;
@@ -6,14 +6,11 @@ import com.sky.context.BaseContext;
 import com.sky.enumeration.OperationType;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
-import org.aspectj.lang.Signature;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.stereotype.Component;
-
-import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 import java.time.LocalDateTime;
 
@@ -28,13 +25,13 @@ public class AutoFillAspact {
      * 切入点
      */
     //execution的*要空格
-    @Pointcut("execution(* com.sky.mapper.*.*())&& @annotation(com.sky.annotation.AutoFill)")
-    public void AutoFillpoint(){}
+    @Pointcut("execution(* com.sky.mapper.*.*(..))&& @annotation(com.sky.annotation.AutoFill)")
+    public void AutoFillpointcut(){}
 
     /**
      * 前置通知
      */
-    @Before("AutoFillpoint()")
+    @Before("AutoFillpointcut()")
     public void autoFill(JoinPoint joinPoint){
         log.info("开始公共字段填充。。。");
         MethodSignature signature = (MethodSignature) joinPoint.getSignature();//方法签名对象
